@@ -75,23 +75,33 @@ public class Movement_Alt : MonoBehaviour
     private void RotateRight()
     {
         Rotate(-rotationThrust);
-        if (!leftThrusterParticle)
+        if (leftThrusterParticle != null && !leftThrusterParticle.isPlaying)
+        {
             leftThrusterParticle.Play();
+        }
     }
 
     private void RotateLeft()
     {
         Rotate(rotationThrust);
-        if (!rightThrusterParticle)
+        if (rightThrusterParticle != null && !rightThrusterParticle.isPlaying)
+        {
             rightThrusterParticle.Play();
+        }
     }
 
     private void StopRotating()
     {
-        rightThrusterParticle.Stop();
-        leftThrusterParticle.Stop();
-    }
+        if (rightThrusterParticle != null)
+        {
+            rightThrusterParticle.Stop();
+        }
 
+        if (leftThrusterParticle != null)
+        {
+            leftThrusterParticle.Stop();
+        }
+    }
     private void Rotate(float rotationFrame)
     {
         rb.freezeRotation = true;
