@@ -62,7 +62,7 @@ public class Movement_Alt : MonoBehaviour
         rb.AddRelativeForce(Vector3.forward * mainThrust * Time.deltaTime);
         if (!mAudioSource.isPlaying)
             mAudioSource.PlayOneShot(mainEngine);
-        if (!mainThrusterParticle)
+        if (mainThrusterParticle != null && !mainThrusterParticle.isPlaying)
             mainThrusterParticle.Play();
     }
 
